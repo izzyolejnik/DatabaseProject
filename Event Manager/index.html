@@ -2,9 +2,9 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Contact Manager</title>
-	<script type="text/javascript" src="code.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" >
-    <link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="style.css">
+	<script src="main.js"></script>
 </head>
 <body>
 <div id="content">
@@ -15,8 +15,8 @@
 			<input type="text" id="loginUsername" placeholder="Enter Username" /><br />
 			<label for="loginPassword"><b>Password</b></label>
 			<input type="password" id="loginPassword" placeholder="Enter Password"/><br />
-			<button type="button" id="loginButton" class="buttons" onclick="doLogin();"> Log in </button>
-			<button type="button" id="registerButton" class= "buttons" onclick="toRegister();"> Sign up here! </button>
+			<button type="button" id="loginButton" class="buttons" onclick="doLogin()"> Log in </button>
+			<button type="button" id="registerButton" class= "buttons" onclick="toRegister()"> Sign up here! </button>
 			<br />
 		</div>
 		<span id="loginResult"></span>
