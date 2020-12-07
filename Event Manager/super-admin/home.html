@@ -14,20 +14,19 @@
   	  </ul>
   	</nav>
   </header>
-  <h1>Participant Event Management</h1>
+  <h1>Super Admin Event Management</h1>
 </body>
 <p> 
 	Welcome to the <b>Event Management System</b>. <br>
-	You have made it to this page because you have been authenticated as a participant! <br>
+	You have made it to this page because you have been authenticated as a super admin! <br>
   Here you can search for events in the following ways... <br>
   <ul>
-    <li>By event <b>start</b> and <b>end</b> date</li>
-    <li>By <b>currently active</b> events</li>
+    <li>By event <b>creator</b></li>
+    <li>By specific <b>user</b> participation</li>
   </ul>
 </p>
-<h3>Search by Start and End Date</h3>
-<input type="Date" id="start">
-<input type="Date" id="end">
-<h3>Search Currently Active Events</h3>
-<button type="button" onclick="showActiveEvents()">Show Active Events</button>
+<h3>Search by Event Creator</h3>
+<input type="text" id="adminSearch" onkeyup="myFunction()" placeholder="Search for event creator.." title="Type in a name">
+<h3>Search by Participating User</h3>
+<input type="text" id="userSearch" onkeyup="myFunction()" placeholder="Search for participating user.." title="Type in a name">
 </html>
