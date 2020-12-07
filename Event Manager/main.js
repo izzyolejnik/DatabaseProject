@@ -17,6 +17,12 @@ function toRegister()
 	hideOrShow("loginDiv", false);
 }
 
+function doRegister()
+{
+	hideOrShow("loginDiv", true);
+	hideOrShow("registerDiv", false);
+}
+
 function doLogout()
 {
 	/*userId = 0;
