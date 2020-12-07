@@ -100,8 +100,9 @@ table {
 table th,td {
   float: center;
   border: 4px black;
-  background-color: #252222;
+  background-color: white;
   position: center;
+  color: black;
 }
 table{
     margin: auto;            

@@ -111,16 +111,6 @@ th{
   text-align: center;
   color: black;
 }
-td {
-  height: 25px;
-  vertical-align: bottom;
-  color: black;
-}
-th, td {
-  padding: 15px;
-  text-align: center;
-  color: black;
-  border-bottom: 3px solid #ddd;
-}
+
 tr:hover {background-color: #ffb6c1;}
 tr:first-child:hover {background-color: white;}

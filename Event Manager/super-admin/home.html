@@ -26,7 +26,26 @@
   </ul>
 </p>
 <h3>Search by Event Creator</h3>
-<input type="text" id="adminSearch" onkeyup="myFunction()" placeholder="Search for event creator.." title="Type in a name">
+<div id="search">
+  <input type="text" id="searchCreator" placeholder="Search for event creator.." title="Type in a name">
+  <button type="button" id="searchButton" class="dashbutton" onclick="searchCreator();">Search</button>
+</div>
+
+<table class="Events" id="creatorTable" border="1">
+  <tr>
+    <th width=100>Name</th>
+    <th width=100>Title</th>
+    <th width=150>Description</th>
+    <th width=100>Url</th>
+    <th width=50>Start</th>
+    <th width=50>End</th>
+  </tr>
+</table>
+
 <h3>Search by Participating User</h3>
-<input type="text" id="userSearch" onkeyup="myFunction()" placeholder="Search for participating user.." title="Type in a name">
+<div id="search">
+  <input type="text" id="searchUser" placeholder="Search for participating user.." title="Type in a name">
+  <button type="button" id="searchButton" class="dashbutton" onclick="searchUser();">Search</button>
+</div>
+
 </html>
