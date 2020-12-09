@@ -45,7 +45,14 @@
 <h3>Search by Participating User</h3>
 <div id="search">
   <input type="text" id="searchUser" placeholder="Search for participating user.." title="Type in a name">
-  <button type="button" id="searchButton" class="dashbutton" onclick="searchUser();">Search</button>
+  <button type="button" id="searchButton" class="dashbutton" onclick="searchUser(document.getElementById('searchUser').value);">Search</button>
 </div>
+
+<table class="Events" id="participantTable" border="1">
+  <tr>
+    <th width=100>Name</th>
+    <th width=100>Title</th>
+  </tr>
+</table>
 
 </html>

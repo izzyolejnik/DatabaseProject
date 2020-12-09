@@ -97,3 +97,58 @@ function searchCreator(str)
 		document.getElementById("creatorSearchResult").innerHTML = err.message;
 	}
 }
+
+function searchUser(str)
+{
+	// Get info from the html
+	var search = document.getElementById("searchUser").value;
+
+	var urlBase = "/DatabaseProject/Event%20Manager";
+	var jsonPayload = '{"search" : "' + search + '"}';
+	var url = urlBase + '/superSearchUser.php?q=' + str;
+
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		// Send the json info to php
+		xhr.send(jsonPayload);
+
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				var jsonObject = JSON.parse(xhr.responseText);
+
+				temp = 0;
+				
+				// clear the table
+				for (var i = document.getElementById("participantTable").rows.length; i > 1; i--)
+				{
+					document.getElementById("participantTable").deleteRow(i -1);
+				}
+				
+				while (temp < jsonObject.Name.length)
+				{
+					var table = document.getElementById('participantTable');
+
+					// add a new row to the bottom of the table, then fill with information
+					var row = table.insertRow(-1);
+
+					var cell1 =row.insertCell(0);
+					var cell2 =row.insertCell(1);
+
+					cell1.innerHTML = jsonObject.Name[temp];
+					cell2.innerHTML = jsonObject.Title[temp];
+					temp++;
+				}
+
+			}
+		};
+	}
+	catch(err)
+	{
+		document.getElementById("userSearchResult").innerHTML = err.message;
+	}
+}
