@@ -9,12 +9,22 @@ if(isset($_POST['searchDate']))
     $query = "SELECT * FROM Event WHERE eventStart BETWEEN '".$start."' AND '".$end."' ORDER BY eventStart";
     $search_result = mysqli_query($conn, $query);
 }
+
+else if(isset($_POST['searchCity']))
+{
+    $city = mysqli_real_escape_string($conn, $_POST['city']);
+    $city = strtolower($city);
+
+    $query = "SELECT * FROM Event WHERE eventCity='$city'";
+    $search_result = mysqli_query($conn, $query);
+}
+
 else
 {
     $currdate = date("Y-m-d");
     $query = "SELECT * FROM Event WHERE eventStart <= '$currdate' AND eventEnd >= '$currdate'";
     $search_result = mysqli_query($conn, $query);
-} 
+}
 ?>
 
 <html>
@@ -71,7 +81,12 @@ else
       </tr>
   <?php endwhile;?>
 </table>
-<h3>Search Currently Active Events</h3>
-<button type="submit" onclick="showActiveEvents()">Show Active Events</button>
+
+<h3>Search by City</h3>
+<form action="home.php" method="post">
+<label for="">City:</label>
+<input type="text" name="city"/>
+<button type="submit" name="searchCity">Show events</button>
+</form>
 </body>
 </html>
