@@ -22,7 +22,7 @@ if(isset($_POST['loginVal']))
 			
 			if ($row['userType'] == 1)
 			{
-				header('Location: participant/home.html');
+				header('Location: participant/home.php');
 				exit;
 			}
 			else if ($row['userType'] == 2)
