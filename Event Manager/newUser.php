@@ -25,10 +25,16 @@ if(isset($_POST['regLog']))
             {
                 $result = "Registration Successful! Go back to login.";
             }
-            else
-            {
-                $result = "Something wrong with query";
-            }
+			else
+			{
+				?>
+				<html>
+				<h3 style="color: #28a745">Event creation failed. Try again.</h3>
+				<a href="home.html">Back</a>
+				</html>
+				<?php
+				
+			}
         }
 
     }

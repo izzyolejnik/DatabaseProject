@@ -21,20 +21,22 @@
     You have navigated to the <b>Add Form</b> page. <br>
     Here you can enter the details of the event you would like to submit.
   </p>
-  <form>
+  <form method = "post" action = "createEvent.php">
     <label for="title">Title:</label><br>
     <input type="text" id="title" name="title" placeholder="Enter Event Title"><br>
     <label for="description">Description:</label><br>
     <textarea id="description" name="description" row="4" col="50" placeholder="Enter Event Description"></textarea><br><br>
     <label for="link">URL:</label><br>
-    <input type="URL" id="link" name="link" placeholder="Enter Event URL"><br><br>
+    <input type="Link" id="link" name="link" placeholder="Enter Event URL"><br><br>
     <label for="start">Start Date:</label><br>
     <input type="Date" id="start" name="start"><br><br>
     <label for="end">End Date:</label><br>
     <input type="Date" id="end" name="end"><br><br>
     <label for="address">Address:</label><br>
     <input type="Address" id="address" name="address"><br><br>
-    <input type="submit" value="Submit Event">
+    <label for="city">City:</label><br>
+    <input type="City" id="city" name="city"><br><br>
+    <input type="submit" name="eventInfo" value="Submit Event">
   </form>
 </body>
 </html>
