@@ -12,7 +12,7 @@
 
     $check = "SELECT * FROM User_Signup_Event WHERE User_userID = '$uID' AND Event_eventID = '$id'";
     $checkRes = $conn->query($check);
-    if(checkRes->num_rows > 0)
+    if($checkRes->num_rows > 0)
     {
         // already joined
         echo "already joined";
