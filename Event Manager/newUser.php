@@ -16,18 +16,18 @@ if(isset($_POST['regLog']))
         $result = mysqli_query($conn, $checkUnique);
         if (mysqli_num_rows($result) > 0)
         {
-           echo("Sorry...username was already taken");
+            $result = "Registration Unsuccessful! Username was taken. Go back to login.";
         }
         else
         {
             $insertion = "INSERT INTO User (userName, userPass, userType) VALUES ('$username','$password', '1')";
             if (mysqli_query($conn, $insertion))
             {
-                echo("Success");
+                $result = "Registration Successful! Go back to login.";
             }
             else
             {
-                echo("failed");
+                $result = "Something wrong with query";
             }
         }
 
@@ -43,6 +43,6 @@ mysqli_close($conn);
 
 <!DOCTYPE html>
 <html>
-    <h3 style="color: #28a745">Registration Successful! Go back to login.</h3>
+    <h3><b><?php echo($result) ?></b></h3>
     <a href="index.php">Back</a>
 </html>
