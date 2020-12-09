@@ -18,8 +18,18 @@ if(isset($_POST['loginVal']))
         {
 			$row = $result->fetch_assoc();
 			
+            setcookie('userID', $row['userID']);
+			
 			if ($row['userType'] == 1)
-				include 'participant/home.php';
+			{
+				header('Location: participant/home.html');
+				exit;
+			}
+			else if ($row['userType'] == 2)
+			{
+				header('Location: admin/home.html');
+				exit;
+			}
 				
         }
         else
