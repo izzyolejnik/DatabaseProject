@@ -100,7 +100,6 @@ table {
 table th,td {
   float: center;
   border: 4px black;
-  background-color: #252222;
   position: center;
 }
 table{
@@ -109,17 +108,14 @@ table{
 th{
   background-color:pink;
   text-align: center;
-  color: black;
 }
 td {
   height: 25px;
   vertical-align: bottom;
-  color: black;
 }
 th, td {
   padding: 15px;
   text-align: center;
-  color: black;
   border-bottom: 3px solid #ddd;
 }
 tr:hover {background-color: #ffb6c1;}
