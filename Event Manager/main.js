@@ -156,7 +156,6 @@ function searchUser(str)
 function showEvents(active)
 {
 	var urlBase = "/DatabaseProject/Event%20Manager";
-	// irrelevant? var jsonPayload = '{"search" : "' + search + '"}';
 	var url = urlBase + '/searchMyEvents.php?active=' + active;
 
 	var xhr = new XMLHttpRequest();
@@ -204,6 +203,33 @@ function showEvents(active)
 					temp++;
 				}
 
+			}
+		};
+	}
+	catch(err)
+	{
+		document.getElementById("adminSearchResult").innerHTML = err.message;
+	}
+}
+
+function joinEvent(id)
+{
+	var urlBase = "/DatabaseProject/Event%20Manager";
+	var url = urlBase + '/joinEvent.php?id=' + id;
+
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		// Send the json info to php
+		xhr.send();
+
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				alert("You have joined this event!");
 			}
 		};
 	}
