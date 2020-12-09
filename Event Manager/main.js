@@ -35,16 +35,17 @@ function doLogout()
 	hideOrShow("loginDiv", true);
 }
 
-function searchCreator()
+function searchCreator(str)
 {
 	// Get info from the html
 	var search = document.getElementById("searchCreator").value;
 
-	var jsonPayload = '{"search" : "' + search + '", "Verified" : "' + globalverified + '"}';
-	var url = urlBase + '/searchCreator.php';
+	var urlBase = "/DatabaseProject/Event%20Manager";
+	var jsonPayload = '{"search" : "' + search + '"}';
+	var url = urlBase + '/searchCreator.php?q=' + str;
 
-	var xhr = createCORSRequest('GET', url);
-	xhr.open("POST", url, true);
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
 	{
@@ -64,57 +65,30 @@ function searchCreator()
 				{
 					document.getElementById("creatorTable").deleteRow(i -1);
 				}
-
-				if(globalverified == 1)
+				
+				while (temp < jsonObject.Name.length)
 				{
-					while (temp < jsonObject.Name.length)
-					{
-						var table = document.getElementById('creatorTable');
+					var table = document.getElementById('creatorTable');
 
-						// add a new row to the bottom of the table, then fill with information
-						var row = table.insertRow(-1);
+					// add a new row to the bottom of the table, then fill with information
+					var row = table.insertRow(-1);
 
-						var cell1 =row.insertCell(0);
-						var cell2 =row.insertCell(1);
-						var cell3 =row.insertCell(2);
-						var cell4 =row.insertCell(3);
-						var cell5 =row.insertCell(4);
-						var cell6 =row.insertCell(5);
+					var cell1 =row.insertCell(0);
+					var cell2 =row.insertCell(1);
+					var cell3 =row.insertCell(2);
+					var cell4 =row.insertCell(3);
+					var cell5 =row.insertCell(4);
+					var cell6 =row.insertCell(5);
 
-						cell1.innerHTML = jsonObject.Name[temp];
-						cell2.innerHTML = jsonObject.Title[temp];
-						cell3.innerHTML = jsonObject.Description[temp];
-						cell4.innerHTML = jsonObject.Url[temp];
-						cell5.innerHTML = jsonObject.Start[temp];
-						cell6.innerHTML = jsonObject.End[temp];
-						temp++;
-					}
+					cell1.innerHTML = jsonObject.Name[temp];
+					cell2.innerHTML = jsonObject.Title[temp];
+					cell3.innerHTML = jsonObject.Description[temp];
+					cell4.innerHTML = jsonObject.Url[temp];
+					cell5.innerHTML = jsonObject.Start[temp];
+					cell6.innerHTML = jsonObject.End[temp];
+					temp++;
 				}
-				else
-				{
-					while (temp < jsonObject.Name.length)
-					{
-						var table = document.getElementById('creatorTable');
 
-						// add a new row to the bottom of the table, then fill with information
-						var row = table.insertRow(-1);
-
-						var cell1 =row.insertCell(0);
-						var cell2 =row.insertCell(1);
-						var cell3 =row.insertCell(2);
-						var cell4 =row.insertCell(3);
-						var cell5 =row.insertCell(4);
-						var cell6 =row.insertCell(5);
-
-						cell1.innerHTML = jsonObject.Name[temp];
-						cell2.innerHTML = jsonObject.Title[temp];
-						cell3.innerHTML = jsonObject.Description[temp];
-						cell4.innerHTML = jsonObject.Url[temp];
-						cell5.innerHTML = jsonObject.Start[temp];
-						cell6.innerHTML = jsonObject.End[temp];
-						temp++;
-					}
-				}
 			}
 		};
 	}

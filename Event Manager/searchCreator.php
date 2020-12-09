@@ -1,10 +1,8 @@
 <?php
 
-    $inData = getRequestInfo();
-    $verified = $inData["Verified"];
-    $search = $inData["search"];
+    $search = $_REQUEST["q"];
 
-    $conn = new mysqli("localhost", "USERNAME", "PASSWORD", "APP NAME");
+    $conn = mysqli_connect('classdb.coxzu7nvqfji.us-east-2.rds.amazonaws.com', 'admin', 'SecurePassword123', 'mydb');
     if ($conn->connect_error)
     {
         returnWithError( $conn->connect_error );
@@ -17,9 +15,27 @@
     $End = "";
 
     $searchCount = 0;
-    $sql = "SELECT * FROM Events WHERE (Verified = $verified AND (Name LIKE '%$search%')) ORDER BY Start";
+    $unameSQL = "SELECT * FROM User WHERE userName = '$search'";
+    $first = $conn->query($unameSQL);
+    $uID = "";
+    $uname = "";
+    $rowNumOne = $first->num_rows;
+    if($rowNumOne > 0)
+    {
+      while($row = $first->fetch_assoc())
+      {
+        $uname = $row["userName"];
+        $uID = $row["userID"];
+      }
+    }
+    else
+    {
+      returnWithError("ADMIN NOT FOUND.");
+    }
+    $eventSQL = "SELECT * FROM Event WHERE userID = '$uID'";
+
     
-    $result = $conn->query($sql);
+    $result = $conn->query($eventSQL);
     $rowNumber = $result->num_rows;
     
     if($rowNumber > 0)
@@ -36,12 +52,12 @@
             $End .=",";
           }
           $searchCount++;
-          $Name .= '"' . $row["Name"] . '"';
-          $Title .= '"' . $row["Title"] . '"';
-          $Description .= '"' . $row["Description"] . '"';
-          $Url .= '"' . $row["Url"] . '"';
-          $Start .= '"' . $row["Start"] . '"';
-          $End .= '"' . $row["End"] . '"';
+          $Name .= '"' . $uname . '"';
+          $Title .= '"' . $row["eventTitle"] . '"';
+          $Description .= '"' . $row["eventDesc"] . '"';
+          $Url .= '"' . $row["eventURL"] . '"';
+          $Start .= '"' . $row["eventStart"] . '"';
+          $End .= '"' . $row["eventEnd"] . '"';
       }
       
       $conn->close();
