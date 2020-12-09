@@ -2,7 +2,7 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Event Manager</title>
-	<script type="text/javascript" src="code.js"></script>
+	<script type="text/javascript" src="../main.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" >
     <link rel="stylesheet" href="style.css">
 </head>
@@ -22,5 +22,18 @@
     Here you can list the title and URL of the events you have organized. <br>
     You may also list your current active events. 
   </p>
-  <button type="button" onclick="showEvents()">Show My Organized Events</button>
-  <button type="button" onclick="showActiveEvents()">Show My Active Organized Events</button>
+  <button type="button" onclick="showEvents(0)">Show My Organized Events</button>
+  <!--- so basically call a query on events where userID is the same as the cookie
+        and for the one below add active search paramater --->
+  <button type="button" onclick="showEvents(1)">Show My Active Organized Events</button>
+
+  <table class="Events" id="adminTable" border="1">
+    <tr>
+      <th width=100>Name</th>
+      <th width=100>Title</th>
+      <th width=150>Description</th>
+      <th width=100>Url</th>
+      <th width=50>Start</th>
+      <th width=50>End</th>
+    </tr>
+  </table>
