@@ -12,11 +12,11 @@
 		<div class="container">
 			<h1>Event Management System</h1>
 			<label for="loginUsername"><b>Username</b></label>
-			<form name = "test" method = "post" action = "">
-			<input type="text" id="loginUsername" placeholder="Enter Username" /><br />
+			<form name = "poo" method = "post" action = "login.php">
+			<input type="text" name="loginUsername" placeholder="Enter Username" /><br />
 			<label for="loginPassword"><b>Password</b></label>
-			<input type="password" id="loginPassword" placeholder="Enter Password"/><br />
-            <button type="submit" name = "Submit" id="Submit" value = "Sumbit"> Log in </input>
+			<input type="password" name="loginPassword" placeholder="Enter Password"/><br />
+            <button type="submit" name = "loginVal"  id="Submit" value = "Sumbit"> Log in </button>
             </form>
             <button type="button" id="registerButton" class="buttons" onclick="toRegister()">Sign up here!</button>
 		</div>
