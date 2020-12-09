@@ -29,8 +29,12 @@ if(isset($_POST['loginVal']))
 			{
 				header('Location: admin/home.html');
 				exit;
-			}
-				
+            }
+            else if ($row['userType'] == 3)
+			{
+				header('Location: super-admin/home.html');
+				exit;
+			}	
         }
         else
         {
