@@ -31,7 +31,7 @@ else
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Event Manager</title>
-	<script type="text/javascript" src="code.js"></script>
+	<script type="text/javascript" src="../main.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" >
     <link rel="stylesheet" href="style.css">
 </head>
@@ -40,6 +40,7 @@ else
   	<nav>
   	  <ul>
   	  	<li><a href="home.html">Home</a></li>
+  	  	<li><a href="host.php">Host An Event</a></li>
   	  </ul>
   	</nav>
   </header>
@@ -68,6 +69,7 @@ else
       <th>End Date</th>
       <th>City</th>
       <th>URL</th>
+      <th>Join</th>
   </tr>
 
   <!-- populate table from mysql database -->
@@ -78,6 +80,7 @@ else
           <td><?php echo $row['eventEnd'];?></td>
           <td><?php echo $row['eventCity'];?></td>
           <td><?php echo $row['eventURL'];?></td>
+          <td><button type="button" id="registerButton" class="buttons" onclick="joinEvent(<?php echo $row['eventID'];?>)">Join</button></td>
       </tr>
   <?php endwhile;?>
 </table>
