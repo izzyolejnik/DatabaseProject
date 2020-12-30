@@ -39,8 +39,34 @@ else
   <header>
   	<nav>
   	  <ul>
-  	  	<li><a href="home.html">Home</a></li>
-  	  	<li><a href="host.php">Host An Event</a></li>
+  	  	<li><a href="home.php">Home</a></li>
+        <li><a href="host.php">Host An Event</a></li>
+        <?php
+          $conn = mysqli_connect('classdb.coxzu7nvqfji.us-east-2.rds.amazonaws.com', 'admin', 'SecurePassword123', 'mydb');
+          if ($conn->connect_error)
+          {
+              die("Connection failed: " . $conn->connect_error);
+          }
+          if(isset($_COOKIE['userID']))
+          {
+            $userID = $_COOKIE['userID'];
+            
+            $userCheck = "select * from User where userID = '$userID'";
+            $result = mysqli_query($conn, $userCheck);
+            
+            if ($result)
+            {
+              $row = $result->fetch_assoc();
+              if ($row['userType'] == 2)
+              {
+                ?>
+                <li><a href="../admin/home.html">Admin View</a></li>
+                <?php
+              }
+            }
+          }
+          mysqli_close($conn);
+        ?>
   	  </ul>
   	</nav>
   </header>

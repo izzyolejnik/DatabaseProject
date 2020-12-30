@@ -52,7 +52,7 @@
             $End .=",";
           }
           $searchCount++;
-          $Name .= '"' . $uname . '"';
+          $Name .= '"' . $row["userID"] . '"';
           $Title .= '"' . $row["eventTitle"] . '"';
           $Description .= '"' . $row["eventDesc"] . '"';
           $Url .= '"' . $row["eventURL"] . '"';
